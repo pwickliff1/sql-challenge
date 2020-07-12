@@ -6,25 +6,26 @@ DROP TABLE IF EXISTS employees;
 DROP TABLE IF EXISTS departments;
 
 CREATE TABLE departments (
-	dept_no	VARCHAR PRIMARY KEY,			
-	dept_name VARCHAR			
+	dept_no	VARCHAR PRIMARY KEY NOT NULL,			
+	dept_name VARCHAR NOT NULL			
 );
 
 
 CREATE TABLE employees (
-	emp_no VARCHAR PRIMARY KEY,				
-	birth_date DATE,				
-	first_name VARCHAR,				
-	last_name VARCHAR,				
-	gender CHAR(1),			
-	hire_date DATE
-	);
+	emp_no VARCHAR PRIMARY KEY NOT NULL,				
+	birth_date DATE NOT NULL,				
+	first_name VARCHAR NOT NULL,				
+	last_name VARCHAR NOT NULL,				
+	gender CHAR(1) NOT NULL,			
+	hire_date DATE NOT NULL
+
+);
 	
 CREATE TABLE dept_emp (
 	ID SERIAL PRIMARY KEY,
-	emp_no VARCHAR,				
-	dept_no VARCHAR,				
-	from_date DATE, 				
+	emp_no VARCHAR NOT NULL,				
+	dept_no VARCHAR NOT NULL,				
+	from_date DATE NOT NULL, 				
 	to_date DATE,
 	FOREIGN KEY (dept_no) REFERENCES departments (dept_no),
 	FOREIGN KEY (emp_no) REFERENCES employees (emp_no)
@@ -32,9 +33,9 @@ CREATE TABLE dept_emp (
 	
 CREATE TABLE dept_manager (
 	ID SERIAL PRIMARY KEY,
-	dept_no VARCHAR,			
-	emp_no VARCHAR,				
-	from_date DATE,				
+	dept_no VARCHAR NOT NULL,			
+	emp_no VARCHAR NOT NULL,				
+	from_date DATE NOT NULL,				
 	to_date DATE,
 	FOREIGN KEY (dept_no) REFERENCES departments (dept_no),
 	FOREIGN KEY (emp_no) REFERENCES employees (emp_no)
@@ -42,20 +43,20 @@ CREATE TABLE dept_manager (
 );
 
 CREATE TABLE salaries (
-	ID serial PRIMARY KEY,
-	emp_no VARCHAR,				
-	salary INT,				
-	from_date DATE,				
-	to_date DATE,
+	ID SERIAL PRIMARY KEY,
+	emp_no VARCHAR NOT NULL,				
+	salary INT NOT NULL,				
+	from_date DATE NOT NULL,				
+	to_date DATE NOT NULL,
 	FOREIGN KEY (emp_no) REFERENCES employees (emp_no)
 );
 
 CREATE TABLE titles (
 	ID SERIAL PRIMARY KEY,
-	emp_no VARCHAR,				
-	title VARCHAR,				
-	from_date DATE,				
-	to_date DATE,	
+	emp_no VARCHAR NOT NULL,				
+	title VARCHAR NOT NULL,				
+	from_date DATE NOT NULL,				
+	to_date DATE NOT NULL,	
 	FOREIGN KEY (emp_no) REFERENCES employees (emp_no)
 );
 
