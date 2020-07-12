@@ -44,7 +44,7 @@ CREATE TABLE dept_manager (
 CREATE TABLE salaries (
 	ID serial PRIMARY KEY,
 	emp_no VARCHAR,				
-	salary MONEY,				
+	salary INT,				
 	from_date DATE,				
 	to_date DATE,
 	FOREIGN KEY (emp_no) REFERENCES employees (emp_no)
